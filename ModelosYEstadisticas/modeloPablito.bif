@@ -1,0 +1,180 @@
+network unknown {
+}
+variable age {
+    type discrete [ 3 ] { Adulto, AdultoJoven, AdultoMayor };
+}
+variable ca {
+    type discrete [ 4 ] { 0.0, 1.0, 2.0, 3.0 };
+}
+variable chol {
+    type discrete [ 2 ] { Alto, Normal };
+}
+variable cp {
+    type discrete [ 4 ] { 1.0, 2.0, 3.0, 4.0 };
+}
+variable exang {
+    type discrete [ 2 ] { 0.0, 1.0 };
+}
+variable fbs {
+    type discrete [ 2 ] { 0.0, 1.0 };
+}
+variable hd {
+    type discrete [ 2 ] { 0, 1 };
+}
+variable oldpeak {
+    type discrete [ 2 ] { Alto, Normal };
+}
+variable restecg {
+    type discrete [ 3 ] { 0.0, 1.0, 2.0 };
+}
+variable sex {
+    type discrete [ 2 ] { 0.0, 1.0 };
+}
+variable slope {
+    type discrete [ 3 ] { 1.0, 2.0, 3.0 };
+}
+variable thal {
+    type discrete [ 3 ] { 3.0, 6.0, 7.0 };
+}
+variable thalach {
+    type discrete [ 3 ] { Alta, Bajo, Normal };
+}
+variable trestbps {
+    type discrete [ 3 ] { Hipertension, Hipotension, TensionNormal };
+}
+probability ( age ) {
+    table 0.6801801801801802, 0.02702702702702703, 0.2927927927927928 ;
+}
+probability ( ca | hd ) {
+    ( 0 ) 0.8305084745762712, 0.11016949152542373, 0.03389830508474576, 0.025423728813559324;
+    ( 1 ) 0.3269230769230769, 0.3173076923076923, 0.22115384615384615, 0.1346153846153846;
+
+}
+probability ( chol | age ) {
+    ( Adulto ) 0.8940397350993378, 0.10596026490066225;
+    ( AdultoJoven ) 0.8333333333333334, 0.16666666666666666;
+    ( AdultoMayor ) 0.8923076923076924, 0.1076923076923077;
+
+}
+probability ( cp | hd ) {
+    ( 0 ) 0.09322033898305085, 0.211864406779661, 0.423728813559322, 0.2711864406779661;
+    ( 1 ) 0.057692307692307696, 0.0673076923076923, 0.125, 0.75;
+
+}
+probability ( exang | hd ) {
+    ( 0 ) 0.8305084745762712, 0.1694915254237288;
+    ( 1 ) 0.4423076923076923, 0.5576923076923077;
+
+}
+probability ( fbs | age ) {
+    ( Adulto ) 0.847682119205298, 0.152317880794702;
+    ( AdultoJoven ) 1.0, 0.0;
+    ( AdultoMayor ) 0.8, 0.2;
+
+}
+probability ( hd | age, chol, fbs, sex, thal ) {
+    ( Adulto, Alto, 0.0, 0.0, 3.0 ) 0.9032258064516129, 0.0967741935483871;
+    ( Adulto, Alto, 0.0, 0.0, 6.0 ) 0.5, 0.5;
+    ( Adulto, Alto, 0.0, 0.0, 7.0 ) 0.0, 1.0;
+    ( Adulto, Alto, 0.0, 1.0, 3.0 ) 0.7142857142857143, 0.2857142857142857;
+    ( Adulto, Alto, 0.0, 1.0, 6.0 ) 0.4, 0.6;
+    ( Adulto, Alto, 0.0, 1.0, 7.0 ) 0.2619047619047619, 0.7380952380952381;
+    ( Adulto, Alto, 1.0, 0.0, 3.0 ) 0.6666666666666666, 0.3333333333333333;
+    ( Adulto, Alto, 1.0, 0.0, 6.0 ) 0.0, 1.0;
+    ( Adulto, Alto, 1.0, 0.0, 7.0 ) 0.0, 1.0;
+    ( Adulto, Alto, 1.0, 1.0, 3.0 ) 0.875, 0.125;
+    ( Adulto, Alto, 1.0, 1.0, 6.0 ) 0.0, 1.0;
+    ( Adulto, Alto, 1.0, 1.0, 7.0 ) 0.7142857142857143, 0.2857142857142857;
+    ( Adulto, Normal, 0.0, 0.0, 3.0 ) 1.0, 0.0;
+    ( Adulto, Normal, 0.0, 0.0, 6.0 ) 0.5, 0.5;
+    ( Adulto, Normal, 0.0, 0.0, 7.0 ) 0.5, 0.5;
+    ( Adulto, Normal, 0.0, 1.0, 3.0 ) 0.75, 0.25;
+    ( Adulto, Normal, 0.0, 1.0, 6.0 ) 0.5, 0.5;
+    ( Adulto, Normal, 0.0, 1.0, 7.0 ) 0.0, 1.0;
+    ( Adulto, Normal, 1.0, 0.0, 3.0 ) 0.5, 0.5;
+    ( Adulto, Normal, 1.0, 0.0, 6.0 ) 0.5, 0.5;
+    ( Adulto, Normal, 1.0, 0.0, 7.0 ) 0.5, 0.5;
+    ( Adulto, Normal, 1.0, 1.0, 3.0 ) 0.5, 0.5;
+    ( Adulto, Normal, 1.0, 1.0, 6.0 ) 0.0, 1.0;
+    ( Adulto, Normal, 1.0, 1.0, 7.0 ) 1.0, 0.0;
+    ( AdultoJoven, Alto, 0.0, 0.0, 3.0 ) 1.0, 0.0;
+    ( AdultoJoven, Alto, 0.0, 0.0, 6.0 ) 0.5, 0.5;
+    ( AdultoJoven, Alto, 0.0, 0.0, 7.0 ) 0.5, 0.5;
+    ( AdultoJoven, Alto, 0.0, 1.0, 3.0 ) 1.0, 0.0;
+    ( AdultoJoven, Alto, 0.0, 1.0, 6.0 ) 0.5, 0.5;
+    ( AdultoJoven, Alto, 0.0, 1.0, 7.0 ) 0.0, 1.0;
+    ( AdultoJoven, Alto, 1.0, 0.0, 3.0 ) 0.5, 0.5;
+    ( AdultoJoven, Alto, 1.0, 0.0, 6.0 ) 0.5, 0.5;
+    ( AdultoJoven, Alto, 1.0, 0.0, 7.0 ) 0.5, 0.5;
+    ( AdultoJoven, Alto, 1.0, 1.0, 3.0 ) 0.5, 0.5;
+    ( AdultoJoven, Alto, 1.0, 1.0, 6.0 ) 0.5, 0.5;
+    ( AdultoJoven, Alto, 1.0, 1.0, 7.0 ) 0.5, 0.5;
+    ( AdultoJoven, Normal, 0.0, 0.0, 3.0 ) 0.5, 0.5;
+    ( AdultoJoven, Normal, 0.0, 0.0, 6.0 ) 0.5, 0.5;
+    ( AdultoJoven, Normal, 0.0, 0.0, 7.0 ) 0.5, 0.5;
+    ( AdultoJoven, Normal, 0.0, 1.0, 3.0 ) 1.0, 0.0;
+    ( AdultoJoven, Normal, 0.0, 1.0, 6.0 ) 0.5, 0.5;
+    ( AdultoJoven, Normal, 0.0, 1.0, 7.0 ) 0.5, 0.5;
+    ( AdultoJoven, Normal, 1.0, 0.0, 3.0 ) 0.5, 0.5;
+    ( AdultoJoven, Normal, 1.0, 0.0, 6.0 ) 0.5, 0.5;
+    ( AdultoJoven, Normal, 1.0, 0.0, 7.0 ) 0.5, 0.5;
+    ( AdultoJoven, Normal, 1.0, 1.0, 3.0 ) 0.5, 0.5;
+    ( AdultoJoven, Normal, 1.0, 1.0, 6.0 ) 0.5, 0.5;
+    ( AdultoJoven, Normal, 1.0, 1.0, 7.0 ) 0.5, 0.5;
+    ( AdultoMayor, Alto, 0.0, 0.0, 3.0 ) 0.7333333333333333, 0.26666666666666666;
+    ( AdultoMayor, Alto, 0.0, 0.0, 6.0 ) 0.5, 0.5;
+    ( AdultoMayor, Alto, 0.0, 0.0, 7.0 ) 0.3333333333333333, 0.6666666666666666;
+    ( AdultoMayor, Alto, 0.0, 1.0, 3.0 ) 0.3333333333333333, 0.6666666666666666;
+    ( AdultoMayor, Alto, 0.0, 1.0, 6.0 ) 0.5, 0.5;
+    ( AdultoMayor, Alto, 0.0, 1.0, 7.0 ) 0.21428571428571427, 0.7857142857142857;
+    ( AdultoMayor, Alto, 1.0, 0.0, 3.0 ) 0.6666666666666666, 0.3333333333333333;
+    ( AdultoMayor, Alto, 1.0, 0.0, 6.0 ) 0.5, 0.5;
+    ( AdultoMayor, Alto, 1.0, 0.0, 7.0 ) 0.0, 1.0;
+    ( AdultoMayor, Alto, 1.0, 1.0, 3.0 ) 0.6666666666666666, 0.3333333333333333;
+    ( AdultoMayor, Alto, 1.0, 1.0, 6.0 ) 1.0, 0.0;
+    ( AdultoMayor, Alto, 1.0, 1.0, 7.0 ) 0.0, 1.0;
+    ( AdultoMayor, Normal, 0.0, 0.0, 3.0 ) 1.0, 0.0;
+    ( AdultoMayor, Normal, 0.0, 0.0, 6.0 ) 0.5, 0.5;
+    ( AdultoMayor, Normal, 0.0, 0.0, 7.0 ) 0.5, 0.5;
+    ( AdultoMayor, Normal, 0.0, 1.0, 3.0 ) 0.0, 1.0;
+    ( AdultoMayor, Normal, 0.0, 1.0, 6.0 ) 0.5, 0.5;
+    ( AdultoMayor, Normal, 0.0, 1.0, 7.0 ) 0.3333333333333333, 0.6666666666666666;
+    ( AdultoMayor, Normal, 1.0, 0.0, 3.0 ) 1.0, 0.0;
+    ( AdultoMayor, Normal, 1.0, 0.0, 6.0 ) 0.5, 0.5;
+    ( AdultoMayor, Normal, 1.0, 0.0, 7.0 ) 0.5, 0.5;
+    ( AdultoMayor, Normal, 1.0, 1.0, 3.0 ) 0.5, 0.5;
+    ( AdultoMayor, Normal, 1.0, 1.0, 6.0 ) 0.5, 0.5;
+    ( AdultoMayor, Normal, 1.0, 1.0, 7.0 ) 0.5, 0.5;
+
+}
+probability ( oldpeak | hd ) {
+    ( 0 ) 0.2711864406779661, 0.7288135593220338;
+    ( 1 ) 0.5961538461538461, 0.40384615384615385;
+
+}
+probability ( restecg | hd ) {
+    ( 0 ) 0.5254237288135594, 0.00847457627118644, 0.4661016949152542;
+    ( 1 ) 0.40384615384615385, 0.019230769230769232, 0.5769230769230769;
+
+}
+probability ( sex ) {
+    table 0.2972972972972973, 0.7027027027027027 ;
+}
+probability ( slope | hd ) {
+    ( 0 ) 0.6016949152542372, 0.3305084745762712, 0.06779661016949153;
+    ( 1 ) 0.27884615384615385, 0.6538461538461539, 0.0673076923076923;
+
+}
+probability ( thal ) {
+    table 0.5405405405405406, 0.05855855855855856, 0.4009009009009009 ;
+}
+probability ( thalach | hd ) {
+    ( 0 ) 0.6186440677966102, 0.06779661016949153, 0.3135593220338983;
+    ( 1 ) 0.2980769230769231, 0.3269230769230769, 0.375;
+
+}
+probability ( trestbps | hd ) {
+    ( 0 ) 0.1864406779661017, 0.00847457627118644, 0.8050847457627118;
+    ( 1 ) 0.28846153846153844, 0.0, 0.7115384615384616;
+
+}
